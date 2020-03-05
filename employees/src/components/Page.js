@@ -14,11 +14,11 @@ class Page extends React.Component{
     componentDidMount(){
         console.log("mounting")
         API.search()
-        .then(data => {
-            console.log(data.data.results)
-            // let employees = data.data.results;
+        .then(result => {
+            console.log(result.data.results)
+            let employees = result.data.results;
 
-            // this.setState({ results : employees })
+            this.setState({ results : employees })
         }).catch(err => console.log(err))
     }
     
@@ -55,7 +55,7 @@ class Page extends React.Component{
       return(
         <ul>
             {this.state.results.map(result => (
-                <li> { result.name }</li>
+                <li> { result.name.first }</li>
             ))
             }
         </ul>
